@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Employee list {% endblock %}
+
+{% block content %}
+<div class="classPad">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" colspan="2">Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Phone number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td colspan="2">Alex Cos</td>
+        <td>HR Management specialist</td>
+        <td>+64 (458) 494-87-95</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Bogdan LB</td>
+        <td>Business developer</td>
+        <td>+507 (696) 285-00-53</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">ПFlorian Kleinz</td>
+        <td>Senior Marketing Manager</td>
+        <td>+220 (444) 364-16-40</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td colspan="2">Hugo Melo</td>
+        <td>Recruiter</td>
+        <td>+691 (469) 279-41-49</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Добавить сотрудника {% endblock %}
+
+{% block content %}
+
+<div class="row">
+<form class="col-md-4 col-md-offset-4">
+    <div class="form-group classWithPad">
+      <label>Name</label>
+      <input class="form-control" type="text" placeholder="Hugo Boss">
+    </div>
+    <div class="form-group classWithPad">
+        <label>Position</label>
+        <input class="form-control" type="text" placeholder="Toilet creator">
+    </div>
+    <div class="form-group classWithPad">
+        <label>Phone number</label>
+        <input class="form-control" type="text" placeholder="+777 (777) 777-77-77">
+    </div>
+    <button type="submit" class="btn btn-primary classWithPad">Add</button>
+  </form>
+</div>
+
+{% endblock %}
