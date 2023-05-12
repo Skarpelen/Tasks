@@ -1,0 +1,12 @@
+{% extends 'discordbotdb/base.html' %}
+
+{% block content %}
+  <h1>Список оружия</h1>
+  <ul>
+  {% for weapon in weapon_list %}
+    <ol>{{ weapon.weapon_name }} - {{ weapon.current_ammo }}, {{ weapon.inventory_name }}</ol>
+  {% empty %}
+    <ol>No weapons found.</ol>
+  {% endfor %}
+  </ul>
+{% endblock %}

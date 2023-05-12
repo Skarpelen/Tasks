@@ -1,0 +1,18 @@
+{% extends "discordbotdb/base.html" %}
+
+{% block content %}
+  <h1>{{ title }}</h1>
+  <ul>
+  {% for status in object_list %}
+    <ol>Тип брони: {{ status.armour }}</ol>
+    <ol>Голова: {{ status.head }}</ol>
+    <ol>Тело: {{ status.body }}</ol>
+    <ol>Левая рука: {{ status.l_hand }}</ol>
+    <ol>Правая рука: {{ status.r_hand }}</ol>
+    <ol>Левая нога: {{ status.l_foot }}</ol>
+    <ol>Правая нога: {{ status.r_foot }}</ol>
+  {% empty %}
+    <ol>No statuses yet.</ol>
+  {% endfor %}
+  </ul>
+{% endblock %}

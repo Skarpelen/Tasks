@@ -1,0 +1,12 @@
+{% extends 'discordbotdb/base.html' %}
+
+{% block content %}
+  <h1>Grenade List</h1>
+  <ul>
+  {% for grenade in grenades_list %}
+    <ol>{{ grenade.grenade_name }} - {{ grenade.amount }}</ol>
+  {% empty %}
+    <ol>No grenades found.</ol>
+  {% endfor %}
+  </ul>
+{% endblock %}

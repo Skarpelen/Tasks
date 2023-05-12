@@ -1,0 +1,19 @@
+{% extends 'discordbotdb/base.html' %}
+
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/template_styles.css' %}">
+{% endblock %}
+
+    {% block content %}
+      <h1>Список пользователей</h1>
+      {% for user in object_list %}
+      <ul>
+        <ol><a href="{% url 'status' pk=user.id %}">{{ user.name }}</a>, Список
+            <a href="{% url 'weapons' pk=user.pk %}">оружия</a> и
+            <a href="{% url 'grenades' pk=user.id %}">гранат</a></ol>
+      </ul>
+      {% endfor %}
+    {% endblock %}
