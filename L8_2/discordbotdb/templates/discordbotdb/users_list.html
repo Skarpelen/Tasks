@@ -4,16 +4,25 @@
 
 {% block head %}
   {{ block.super }}
-  <link rel="stylesheet" href="{% static 'css/template_styles.css' %}">
 {% endblock %}
 
-    {% block content %}
-      <h1>Список пользователей</h1>
-      {% for user in object_list %}
-      <ul>
-        <ol><a href="{% url 'status' pk=user.id %}">{{ user.name }}</a>, Список
-            <a href="{% url 'weapons' pk=user.pk %}">оружия</a> и
-            <a href="{% url 'grenades' pk=user.id %}">гранат</a></ol>
-      </ul>
-      {% endfor %}
-    {% endblock %}
+{% block content %}
+  <h1>Список пользователей</h1>
+
+  <form method="GET" action="{% url 'users' %}">
+    <input type="text" name="search" placeholder="Поиск по имени">
+    <button type="submit">Поиск</button>
+  </form>
+
+  <ul>
+    {% for user in users %}
+    <li>
+      <a href="{% url 'status' pk=user.id %}">{{ user.name }}</a>,
+      Список <a href="{% url 'weapons' pk=user.pk %}">оружия</a> и
+      <a href="{% url 'grenades' pk=user.id %}">гранат</a>
+    </li>
+    {% empty %}
+    <li>Нет пользователей</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

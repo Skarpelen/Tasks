@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import UsersListView, GuildsListView, WeaponsListView, GrenadesListView, StatusListView
+from .views import UsersListView, GuildsListView, WeaponsListView, GrenadesListView, StatusListView, HomeView
 
 urlpatterns = [
+    path('', HomeView.as_view(), name='home'),
     path('users/', UsersListView.as_view(), name='users'),
     path('guilds/', GuildsListView.as_view(), name='guilds'),
     path('weapons/<int:pk>/', WeaponsListView.as_view(), name='weapons'),

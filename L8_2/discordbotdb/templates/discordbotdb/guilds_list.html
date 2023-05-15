@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'discordbotdb/base.html' %}
 
-</body>
-</html>
+{% block content %}
+  <h1>Список серверов</h1>
+  {% for guild in object_list %}
+    <h2>{{ guild.server_name }}</h2>
+    <ul>
+      {% for user in guild.users_set.all %}
+        <ol>{{ user.name }}</ol>
+      {% empty %}
+        <ol>Пользователи не найдены.</ol>
+      {% endfor %}
+    </ul>
+  {% empty %}
+    <p>Сервера не найдены.</p>
+  {% endfor %}
+{% endblock %}
