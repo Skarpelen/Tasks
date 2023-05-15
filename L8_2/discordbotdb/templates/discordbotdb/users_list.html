@@ -10,14 +10,14 @@
   <h1>Список пользователей</h1>
 
   <form method="GET" action="{% url 'users' %}">
-    <input type="text" name="search" placeholder="Поиск по имени">
+    <input type="text" name="search" placeholder="Поиск по имени" value="{{ search_query }}">
     <button type="submit">Поиск</button>
   </form>
 
   <ul>
     {% for user in users %}
     <li>
-      <a href="{% url 'status' pk=user.id %}">{{ user.name }}</a>,
+      <a href="{% url 'status' pk=user.id %}">{{ user.id }}. {{ user.name }}</a>,
       Список <a href="{% url 'weapons' pk=user.pk %}">оружия</a> и
       <a href="{% url 'grenades' pk=user.id %}">гранат</a>
     </li>

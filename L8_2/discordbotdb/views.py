@@ -1,27 +1,39 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, TemplateView, View, CreateView, UpdateView, DeleteView
+from .forms import UserForm
 from .models import User, Weapon, Grenade, Guild, Status
-
-
-def user_list(request):
-    search_query = request.GET.get('search', '')
-    users = User.objects.filter(name__icontains=search_query)
-    context = {'users': users}
-    return render(request, 'discordbotdb/users.html', context)
 
 
 class HomeView(TemplateView):
     template_name = 'discordbotdb/home.html'
 
 
-class UsersListView(ListView):
+class UserCreateView(CreateView):
     model = User
-    template_name = 'discordbotdb/users_list.html'
+    form_class = UserForm
+    template_name = 'discordbotdb/user_create.html'
+    success_url = reverse_lazy('users')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Список пользователей'
-        return context
+class UserUpdateView(UpdateView):
+    model = User
+    form_class = UserForm
+    template_name = 'discordbotdb/user_update.html'
+    success_url = reverse_lazy('users')
+
+
+class UserDeleteView(DeleteView):
+    model = User
+    template_name = 'discordbotdb/user_delete.html'
+    success_url = reverse_lazy('users')
+
+
+class UsersListView(View):
+    def get(self, request):
+        search_query = request.GET.get('search', '')
+        users = User.objects.filter(name__icontains=search_query)
+        context = {'users': users, 'search_query': search_query}
+        return render(request, 'discordbotdb/users_list.html', context)
 
 
 class WeaponsListView(ListView):

@@ -5,7 +5,7 @@
   {% for guild in object_list %}
     <h2>{{ guild.server_name }}</h2>
     <ul>
-      {% for user in guild.users_set.all %}
+      {% for user in guild.user_set.all %}
         <ol>{{ user.name }}</ol>
       {% empty %}
         <ol>Пользователи не найдены.</ol>
