@@ -15,6 +15,7 @@ class UserCreateView(CreateView):
     template_name = 'discordbotdb/user_create.html'
     success_url = reverse_lazy('users')
 
+
 class UserUpdateView(UpdateView):
     model = User
     form_class = UserForm

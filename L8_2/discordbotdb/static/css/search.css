@@ -1,0 +1,22 @@
+/* search.css */
+
+.search-input {
+  background-color: #1b1f2b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+}
+
+.search-button {
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}

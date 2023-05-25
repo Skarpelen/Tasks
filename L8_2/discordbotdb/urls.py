@@ -1,6 +1,15 @@
 from django.urls import path
-from .views import UsersListView, GuildsListView, WeaponsListView, GrenadesListView, StatusListView, HomeView, \
-    UserCreateView, UserUpdateView, UserDeleteView
+from .views import (
+    UsersListView,
+    GuildsListView,
+    WeaponsListView,
+    GrenadesListView,
+    StatusListView,
+    HomeView,
+    UserCreateView,
+    UserUpdateView,
+    UserDeleteView
+)
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
