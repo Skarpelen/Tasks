@@ -1,44 +1,48 @@
 {% extends 'discordbotdb/base.html' %}
 
+{% block styles %}
+  {% load static %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/users.css' %}">
+{% endblock %}
+
 {% block content %}
-  <div class="server-container">
-    <h2>Список пользователей</h2>
+  <div class="users">
+    <div class="server-container">
+      <h1>Список пользователей</h1>
 
-    <div class="user-actions-left">
-      <a href="{% url 'user_create' %}" class="user-action-button">Добавить</a>
-    </div>
-
-    <form method="GET" action="{% url 'users' %}">
-      <input type="text" name="search" placeholder="Поиск по имени" value="{{ search_query }}" class="search-input">
-      <button type="submit" class="search-button">Поиск</button>
-    </form>
-
-    {% if users %}
-      <div class="user-list">
-        {% for user in users %}
-          <div class="user">
-            <div class="user-info">
-              {{ user.id }}.
-              <a href="{% url 'status' pk=user.id %}">
-                {{ user.name }}
-              </a>
-              <div class="user-details">
-                {{ user.guild.server_name }}
-              </div>
-              <div>
-                Список <a href="{% url 'weapons' pk=user.pk %}">оружия</a> и
-                <a href="{% url 'grenades' pk=user.id %}">гранат</a>
-              </div>
-            </div>
-            <div class="user-actions-right">
-              <a href="{% url 'user_update' pk=user.id %}" class="user-action-button">Обновить</a>
-              <a href="{% url 'user_delete' pk=user.id %}" class="user-action-button">Удалить</a>
-            </div>
-          </div>
-        {% endfor %}
+      <div class="user-actions-left">
+        <a href="{% url 'user_create' %}" class="user-action-button">Добавить</a>
       </div>
-    {% else %}
-      <p>Нет результатов</p>
-    {% endif %}
+
+      <form method="GET" action="{% url 'users' %}">
+        <input type="text" name="search" placeholder="Поиск по имени" value="{{ search_query }}" class="search-input">
+        <button type="submit" class="search-button">Поиск</button>
+      </form>
+
+      {% if users %}
+        <div class="user-list">
+          {% for user in users %}
+            <div class="user">
+              <div class="user-info">
+                <span class="user-id">{{ user.id }}.</span>
+                <a href="{% url 'status' pk=user.id %}" class="user-link">
+                  {{ user.name }}
+                </a>
+                <div class="user-details">
+                  {{ user.guild.server_name }}
+                </div>
+              </div>
+              <div class="user-actions-right">
+                <a href="{% url 'user_update' pk=user.id %}" class="user-action-button">Обновить</a>
+                <a href="{% url 'user_delete' pk=user.id %}" class="user-action-button">Удалить</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>Нет результатов</p>
+      {% endif %}
     </div>
+  </div>
 {% endblock %}

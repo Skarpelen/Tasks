@@ -1,4 +1,4 @@
-.server-container {
+.server .server-container {
   max-width: 800px;
   margin: 0 auto;
   background-color: #0e1015;
@@ -8,73 +8,55 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.server {
+.server .server {
   margin-bottom: 20px;
+  border: 1px solid #283347;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-h2 {
+.server .server h2 {
   margin-bottom: 10px;
   font-size: 24px;
   font-family: "Arial", sans-serif;
+  color: #00ff00;
 }
 
-.user-list {
+.server .user-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 }
 
-.user {
+.server .user {
   padding: 10px;
   border: 1px solid #283347;
   background-color: #1b1f2b;
   color: #fff;
   font-size: 14px;
+  text-align: center;
   font-family: "Arial", sans-serif;
-  display: flex;
-  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.user a {
-  color: #00ff00;
+.server .user:hover {
+  background-color: #283347;
+}
+
+.server .user a {
+  color: #00bfff;
   text-decoration: none;
 }
 
-.user a:hover {
+.server .user a.status-link {
+  color: #00bfff;
+}
+
+.server .user a.status-link:hover {
   text-decoration: underline;
 }
 
-/* Дополнительные стили для кнопок */
-.user-action-button {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 8px 16px;
-  background-color: #4caf50;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Стили для блока кнопок слева */
-.user-actions-left {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* Стили для блока кнопок справа */
-.user-actions-right {
-  text-align: right;
-}
-
-/* Стили для информации о пользователе */
-.user-info {
-  flex-grow: 1;
-  text-align: center;
-}
-
-/* Стили для названия сервера */
-.user-details {
-  text-align: left;
-  color: #ccc;
+.server .user.selected {
+  background-color: #00bfff;
 }

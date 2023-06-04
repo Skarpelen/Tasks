@@ -1,0 +1,83 @@
+.users .server-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #0e1015;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.users .server {
+  margin-bottom: 20px;
+}
+
+.users h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+}
+
+.users .user-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.users .user {
+  padding: 10px;
+  border: 1px solid #283347;
+  background-color: #1b1f2b;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.users .user a {
+  color: #fff;
+}
+
+.users .user a:hover {
+  text-decoration: underline;
+}
+
+.users .user-action-button {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.users .user-actions-left {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.users .user-actions-right {
+  text-align: right;
+}
+
+.users .user-info {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.users .user-details {
+  text-align: left;
+  color: #ccc;
+}
+
+.users .user-link {
+  color: #00bfff !important;
+}
+
+.users .user-link:hover {
+  text-decoration: underline;
+}
+

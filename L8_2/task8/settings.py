@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'discordbotdb',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -91,9 +92,11 @@ USE_TZ = True
 
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIR = []
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'discordbotdb', 'static'),
+]
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

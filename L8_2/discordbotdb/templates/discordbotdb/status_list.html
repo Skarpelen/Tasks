@@ -1,18 +1,51 @@
 {% extends "discordbotdb/base.html" %}
 
 {% block content %}
-  <h1>{{ title }}</h1>
-  <ul>
-  {% for status in object_list %}
-    <ol>Тип брони: {{ status.armour }}</ol>
-    <ol>Голова: {{ status.head }}</ol>
-    <ol>Тело: {{ status.body }}</ol>
-    <ol>Левая рука: {{ status.l_hand }}</ol>
-    <ol>Правая рука: {{ status.r_hand }}</ol>
-    <ol>Левая нога: {{ status.l_foot }}</ol>
-    <ol>Правая нога: {{ status.r_foot }}</ol>
-  {% empty %}
-    <ol>У пользователя нет статуса.</ol>
-  {% endfor %}
-  </ul>
+  <div class="status">
+    {% for status in object_list %}
+      <div class="status-container">
+        <h1 class="status-username">{{ status.user.name }}</h1>
+
+        <p class="status-server">{{ status.user.guild.server_name }}</p>
+
+        <div class="status-body-parts-container">
+          <h2>ХП частей тела</h2>
+          <ul class="status-ul">
+            <li>Голова: <span class="status-hp">{{ status.head }}</span></li>
+            <li>Тело: <span class="status-hp">{{ status.body }}</span></li>
+            <li>Левая рука: <span class="status-hp">{{ status.l_hand }}</span></li>
+            <li>Правая рука: <span class="status-hp">{{ status.r_hand }}</span></li>
+            <li>Левая нога: <span class="status-hp">{{ status.l_foot }}</span></li>
+            <li>Правая нога: <span class="status-hp">{{ status.r_foot }}</span></li>
+          </ul>
+        </div>
+
+        <div class="status-bottom-container">
+          <div class="status-weapons-container">
+            <h2>Оружие</h2>
+            <ul class="status-ul">
+              {% for weapon in status.user.weapon_set.all %}
+                <li>{{ weapon.weapon_name|capfirst }} (Количество патронов: {{ weapon.current_ammo }})</li>
+              {% empty %}
+                <li>Нет оружия.</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="status-grenades-container">
+            <h2>Гранаты</h2>
+            <ul class="status-ul">
+              {% for grenade in status.user.grenade_set.all %}
+                <li>{{ grenade.grenade_name|capfirst }} (Количество: {{ grenade.amount }})</li>
+              {% empty %}
+                <li>Нет гранат.</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>У пользователя нет статуса.</p>
+    {% endfor %}
+  </div>
 {% endblock %}

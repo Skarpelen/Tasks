@@ -1,23 +1,25 @@
 {% extends 'discordbotdb/base.html' %}
 
 {% block content %}
-  <h1>Список серверов</h1>
-  <div class="server-container">
-    {% for guild in object_list %}
-      <div class="server">
-        <h2>{{ guild.server_name }}</h2>
-        <div class="user-list">
-          {% for user in guild.user_set.all %}
-            <div class="user">{{ user.name }}</div>
-          {% empty %}
-            <div class="user">Пользователи не найдены.</div>
-          {% endfor %}
+  <div class="server">
+    <div class="server-container">
+      <h1>Список серверов</h1>
+      {% for guild in object_list %}
+        <div class="server">
+          <h2>{{ guild.server_name }}</h2>
+          <div class="user-list">
+            {% for user in guild.user_set.all %}
+              <div class="user">
+                <a class="user-link" href="{% url 'status' user.id %}">{{ user.id }}. {{ user.name }}</a>
+              </div>
+            {% empty %}
+              <div class="user">Пользователи не найдены.</div>
+            {% endfor %}
+          </div>
         </div>
-      </div>
-    {% empty %}
-      <p>Сервера не найдены.</p>
-    {% endfor %}
+      {% empty %}
+        <p>Сервера не найдены.</p>
+      {% endfor %}
+    </div>
   </div>
-
-
 {% endblock %}

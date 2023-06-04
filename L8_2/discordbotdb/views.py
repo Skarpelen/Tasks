@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, TemplateView, View, CreateView, UpdateView, DeleteView
+from rest_framework import viewsets
 from .forms import UserForm
-from .models import User, Weapon, Grenade, Guild, Status
+from .models import User, Guild, Status, Weapon, Grenade
+from .serializers import GuildSerializer, UserSerializer, StatusSerializer, WeaponSerializer, GrenadeSerializer
 
 
 class HomeView(TemplateView):
@@ -37,35 +39,6 @@ class UsersListView(View):
         return render(request, 'discordbotdb/users_list.html', context)
 
 
-class WeaponsListView(ListView):
-    model = Weapon
-    template_name = 'discordbotdb/weapons_list.html'
-
-    def get_queryset(self):
-        self.user_id = self.kwargs['pk']
-        weapon_list = Weapon.objects.filter(user_id=self.user_id)
-        return weapon_list
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['weapon_list'] = self.get_queryset()
-        return context
-
-
-class GrenadesListView(ListView):
-    model = Grenade
-    template_name = 'discordbotdb/grenades_list.html'
-
-    def get_queryset(self):
-        self.user_id = self.kwargs['pk']
-        return Grenade.objects.filter(user_id=self.user_id)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['grenades_list'] = self.get_queryset()
-        return context
-
-
 class GuildsListView(ListView):
     model = Guild
     template_name = 'discordbotdb/guilds_list.html'
@@ -90,3 +63,24 @@ class StatusListView(ListView):
         context['title'] = 'Статус'
         context['user_id'] = self.user_id
         return context
+
+
+class GuildViewSet(viewsets.ModelViewSet):
+    queryset = Guild.objects.all()
+    serializer_class = GuildSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class StatusViewSet(viewsets.ModelViewSet):
+    queryset = Status.objects.all()
+    serializer_class = StatusSerializer
+
+class WeaponViewSet(viewsets.ModelViewSet):
+    queryset = Weapon.objects.all()
+    serializer_class = WeaponSerializer
+
+class GrenadeViewSet(viewsets.ModelViewSet):
+    queryset = Grenade.objects.all()
+    serializer_class = GrenadeSerializer

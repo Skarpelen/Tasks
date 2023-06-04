@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from task8.settings import BASE_DIR
 
 
 def main():
