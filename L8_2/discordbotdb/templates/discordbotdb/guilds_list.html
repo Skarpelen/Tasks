@@ -10,7 +10,7 @@
           <div class="user-list">
             {% for user in guild.user_set.all %}
               <div class="user">
-                <a class="user-link" href="{% url 'status' user.id %}">{{ user.id }}. {{ user.name }}</a>
+                <a class="user-link" href="{% url 'status' user.id %}">{{ user.name }}</a>
               </div>
             {% empty %}
               <div class="user">Пользователи не найдены.</div>
